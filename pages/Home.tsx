@@ -403,10 +403,10 @@ const Home: React.FC = () => {
           
           <div className="flex overflow-x-auto gap-6 pb-8 snap-x scrollbar-hide">
             {[
-              { name: "Mike Agar", role: "CEO / CRO", img: "/media/photos/1578432474807.jpeg" },
-              { name: "Kanupriya", role: "COO", img: "/media/photos/kanupriya.jpg" },
-              { name: "Marc Mulzer", role: "Advisor Tech", img: "/media/photos/1761311817333.jpeg" },
-              { name: "Roy Hastins", role: "Partner Delivery", img: "/media/photos/1516279550307.jpeg" }
+              { name: "Mike Agar", role: "CEO / CRO", img: "/media/photos/2a0e1f13-0976-4dd5-9505-37118cbc075f.png" },
+              { name: "Kanupriya", role: "COO", img: "/media/photos/4d485f26-41ca-47b2-aaf5-83a19d3603ee.png" },
+              { name: "Marc Mulzer", role: "Advisor Tech", img: "/media/photos/Untitled design (1).png" },
+              { name: "Roy Hastins", role: "Partner Delivery", img: "/media/photos/Untitled design.png" }
             ].map((leader, i) => (
               <motion.div
                 key={i}

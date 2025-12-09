@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
             className="rounded-2xl overflow-hidden shadow-2xl"
           >
             <video
-              src="media/vedio/Untitled design (1).mp4"
+              src="../media/vedio/Untitled design (1).mp4"
               alt="DevOps Project"
               className="w-full h-full object-cover"
               autoPlay
@@ -102,7 +102,7 @@ const Projects: React.FC = () => {
              className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-2xl"
           >
             <video
-              src="media/vedio/Untitled design (2).mp4"
+              src="../media/vedio/Untitled design (2).mp4"
               alt="SWIFT Project"
               className="w-full h-full object-cover"
               autoPlay
