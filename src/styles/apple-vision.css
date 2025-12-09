@@ -1,0 +1,906 @@
+/* Apple Vision Premium About Page Styles */
+
+/* Font Setup - SF Pro fallback to Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* CSS Custom Properties - Apple Vision Color System */
+:root {
+  /* Apple Vision Colors */
+  --bg-primary: #F5F6F8;
+  --text-primary: #0B0E14;
+  --text-muted: #5A5F6F;
+  --accent-blue: #007AFF;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glow-shadow: rgba(0, 122, 255, 0.15);
+  
+  /* Apple Glass System */
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --glass-shadow-hover: 0 16px 64px rgba(31, 38, 135, 0.5);
+  
+  /* Apple Depth System */
+  --depth-1: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --depth-2: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --depth-3: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --depth-4: 0 16px 64px rgba(0, 0, 0, 0.16);
+  
+  /* Apple Animation Timing */
+  --ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.6s;
+}
+
+/* Base Apple Vision Layout */
+.apple-vision-about {
+  font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hero Section - Apple Vision Style */
+.apple-hero {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.1) 0%, 
+    rgba(88, 86, 214, 0.1) 50%, 
+    rgba(255, 45, 85, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  margin: 2rem;
+  padding: 6rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.apple-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 70%);
+  animation: appleShimmer 3s ease-in-out infinite;
+}
+
+.apple-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
+}
+
+.apple-hero p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Story Section - Floating Glass Cards */
+.apple-story {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.apple-story-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-story-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-blue));
+  border-radius: 22px;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-apple);
+  z-index: -1;
+}
+
+.apple-story-content:hover::before {
+  opacity: 0.1;
+}
+
+.apple-story h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.apple-story h2::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent-blue), transparent);
+  border-radius: 2px;
+}
+
+.apple-story p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.apple-story-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--depth-4);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform var(--duration-slow) var(--ease-apple);
+}
+
+.apple-story-image:hover {
+  transform: perspective(1000px) rotateY(0deg) scale(1.02);
+}
+
+.apple-story-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  filter: contrast(1.1) saturate(1.1);
+}
+
+/* Team Section - Apple Bio Cards */
+.apple-team {
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.02) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(0, 122, 255, 0.02) 100%);
+  backdrop-filter: blur(40px);
+}
+
+.apple-team-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.apple-team h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.apple-team p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.apple-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.apple-bio-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  transition: all var(--duration-normal) var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.apple-bio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-blue), 
+    transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-apple);
+}
+
+.apple-bio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.apple-bio-card:hover::before {
+  opacity: 1;
+}
+
+.apple-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent-blue), rgba(0, 122, 255, 0.8));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  box-shadow: var(--depth-3);
+  position: relative;
+}
+
+.apple-avatar::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-blue));
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-apple);
+  z-index: -1;
+}
+
+.apple-bio-card:hover .apple-avatar::before {
+  opacity: 0.3;
+}
+
+.apple-bio-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.apple-bio-card .role {
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.apple-bio-card .description {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Premium Developer Team Section - Apple Glass Cards with Social Hover */
+.apple-team-premium {
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.02) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(0, 122, 255, 0.02) 100%);
+  backdrop-filter: blur(40px);
+}
+
+.apple-team-premium .apple-team-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.apple-team-premium .apple-team-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.apple-team-premium .apple-team-header p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.apple-team-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.apple-dev-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 0;
+  text-align: center;
+  box-shadow: var(--glass-shadow);
+  transition: all var(--duration-normal) var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.apple-dev-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-blue), 
+    transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-apple);
+  z-index: 3;
+}
+
+.apple-dev-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.apple-dev-card:hover::before {
+  opacity: 1;
+}
+
+/* Developer Card Image Container */
+.dev-card-image-container {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+}
+
+.dev-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: all var(--duration-normal) var(--ease-apple);
+  filter: brightness(1) contrast(1.05) saturate(1.1);
+}
+
+.apple-dev-card:hover .dev-card-image {
+  transform: scale(1.1);
+  filter: brightness(0.8) contrast(1.1) saturate(1.2) blur(2px);
+}
+
+/* Social Overlay */
+.dev-card-social-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.9) 0%, 
+    rgba(88, 86, 214, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all var(--duration-normal) var(--ease-apple);
+  z-index: 2;
+}
+
+.apple-dev-card:hover .dev-card-social-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Social Buttons */
+.dev-social-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  transition: all var(--duration-normal) var(--ease-apple);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.dev-social-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 122, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.dev-social-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: all var(--duration-normal) var(--ease-apple);
+}
+
+.dev-social-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Developer Card Content */
+.dev-card-content {
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.dev-card-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  animation: fadeInUp 0.6s var(--ease-apple) forwards;
+}
+
+.dev-card-role {
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  animation: fadeInUp 0.6s var(--ease-apple) 0.1s forwards;
+  animation-fill-mode: both;
+}
+
+.dev-card-description {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  animation: fadeInUp 0.6s var(--ease-apple) 0.2s forwards;
+  animation-fill-mode: both;
+}
+
+/* Services Section - Floating Tiles */
+.apple-services {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.apple-services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.apple-services h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.apple-services p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.apple-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.apple-service-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all var(--duration-normal) var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.apple-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent);
+  transition: left var(--duration-slow) var(--ease-apple);
+}
+
+.apple-service-card:hover::before {
+  left: 100%;
+}
+
+.apple-service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--depth-3);
+  border-color: var(--accent-blue);
+}
+
+.apple-service-card p {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Mission Section - Cinematic Focus */
+.apple-mission {
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.9) 0%, 
+    rgba(88, 86, 214, 0.9) 100%);
+  backdrop-filter: blur(40px);
+  border-radius: 32px;
+  margin: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-mission::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: appleGlow 4s ease-in-out infinite alternate;
+}
+
+.apple-mission-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.apple-mission h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.apple-mission p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.apple-mission-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.apple-mission-value {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform var(--duration-normal) var(--ease-apple);
+}
+
+.apple-mission-value:hover {
+  transform: scale(1.05);
+}
+
+.apple-mission-value svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.apple-mission-value h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Why Choose Us - Magnetic Cards */
+.apple-why {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.apple-why-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.apple-why h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.apple-why p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.apple-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.apple-why-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all var(--duration-normal) var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.apple-why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--accent-blue), 
+    rgba(0, 122, 255, 0.5), 
+    var(--accent-blue));
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-apple);
+}
+
+.apple-why-card:hover::before {
+  transform: scaleX(1);
+}
+
+.apple-why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.apple-why-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--accent-blue), rgba(0, 122, 255, 0.8));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--depth-2);
+}
+
+.apple-why-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.apple-why-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section - Premium Button */
+.apple-cta {
+  padding: 8rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(0, 122, 255, 0.05) 100%);
+  backdrop-filter: blur(40px);
+  text-align: center;
+  margin: 4rem 2rem;
+  border-radius: 32px;
+  border: 1px solid var(--glass-border);
+}
+
+.apple-cta h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.apple-cta p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.apple-cta-button {
+  background: linear-gradient(135deg, var(--accent-blue), rgba(0, 122, 255, 0.9));
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-apple);
+  box-shadow: var(--depth-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.apple-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left var(--duration-slow) var(--ease-apple);
+}
+
+.apple-cta-button:hover::before {
+  left: 100%;
+}
+
+.apple-cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--depth-4);
+}
+
+.apple-cta-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Apple Animations */
+@keyframes appleShimmer {
+  0%, 100% { transform: translateX(-100%) skewX(-15deg); }
+  50% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes appleGlow {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll-triggered animations */
+.apple-fade-in {
+  animation: fadeInUp 0.8s var(--ease-apple) forwards;
+}
+
+.apple-scale-in {
+  animation: scaleIn 0.6s var(--ease-spring) forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .apple-hero {
+    margin: 1rem;
+    padding: 4rem 1.5rem;
+  }
+  
+  .apple-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 1rem;
+  }
+  
+  .apple-team, .apple-team-premium, .apple-services, .apple-why {
+    padding: 4rem 1rem;
+  }
+  
+  .apple-mission, .apple-cta {
+    margin: 2rem 1rem;
+    padding: 4rem 1.5rem;
+  }
+  
+  .apple-team-grid, .apple-team-grid-premium, .apple-why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .apple-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .apple-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .apple-story h2, .apple-team h2, .apple-services h2, 
+  .apple-mission h2, .apple-why h2, .apple-cta h2 {
+    font-size: 2rem;
+  }
+}
