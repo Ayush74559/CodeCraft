@@ -27,7 +27,7 @@ const About: React.FC = () => {
   }, []);
 
   return (
-    <div className="apple-vision-about bg-white min-h-screen pt-20">
+    <div className="apple-vision-about min-h-screen pt-20">
       
       {/* 1. Hero - Apple Vision Style */}
       <section className="apple-hero">
